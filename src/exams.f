@@ -158,8 +158,10 @@ C        CALL PREXA(NMAX)
         PRINT *,'Physics=2,Maths=3,History=4,Geography=5,French=6'
         PRINT *,'<STUDENT>,<SUBJ.N.> and press enter <--'
         PRINT *,'A different subject code, stops the program'
-        READ (*,*)INNAME,INSUBJ
+        READ (*,*,ERR=400)INNAME,INSUBJ
         CALL SHOWM(NMAX,INTEST,NAME,PHYS,MATHS,HISTO,GEOGRA,
      +  FRENCH,INNAME,INSUBJ)
+        GOTO 300
+400     PRINT *,'ERROR in reading input data'
         GOTO 300
       END
