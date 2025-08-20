@@ -14,9 +14,10 @@ RM = del
 MV = move
 TARGET0 = bookcat
 TARGET1 = exams
-TARGET2 = repd
-TARGETS = repd exams bookcat
-RMTARGETS = repd.exe exams.exe bookcat.exe
+TARGET2 = rain
+TARGET3 = repd
+TARGETS = repd rain exams bookcat
+RMTARGETS = repd.exe rain.exe exams.exe bookcat.exe
 all: $(RMTARGETS)
 .PHONY: $(TARGETS) clean distclean install
 $(TARGET0)$(OEXE): $(SRCDIR)\bookcat.f
@@ -29,22 +30,27 @@ $(TARGET1)$(OEXE): $(SRCDIR)\exams.f
 $(TARGET1)$(EEXE): $(TARGET1)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET1)$(EEXE) $(LDFLAGS)
 $(TARGET1): $(TARGET1)$(EEXE)
-$(TARGET2)$(OEXE): $(SRCDIR)\repd.f
+$(TARGET2)$(OEXE): $(SRCDIR)\rain.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET2)$(EEXE): $(TARGET2)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET2)$(EEXE) $(LDFLAGS)
 $(TARGET2): $(TARGET2)$(EEXE)
-TARGET3 = stdio
-$(SRCDIR)\stdio.f: $(SRCDIR)\stdio0.txt $(SRCDIR)\stdio1.txt
-	 cat $(SRCDIR)\stdio1.txt $(SRCDIR)\stdio.txt >$(SRCDIR)\stdio.f
-$(TARGET3)$(OEXE): $(SRCDIR)\$(TARGET3).f
+$(TARGET3)$(OEXE): $(SRCDIR)\repd.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET3)$(EEXE): $(TARGET3)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET3)$(EEXE) $(LDFLAGS)
 $(TARGET3): $(TARGET3)$(EEXE)
+TARGET4 = stdio
+$(SRCDIR)\stdio.f: $(SRCDIR)\stdio0.txt $(SRCDIR)\stdio1.txt
+	 cat $(SRCDIR)\stdio1.txt $(SRCDIR)\stdio.txt >$(SRCDIR)\stdio.f
+$(TARGET4)$(OEXE): $(SRCDIR)\$(TARGET4).f
+	$(FC) $< $(FFLAGS) 
+$(TARGET4)$(EEXE): $(TARGET4)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET4)$(EEXE) $(LDFLAGS)
+$(TARGET4): $(TARGET4)$(EEXE)
 install: all
 	 $(MV) $(TARGETS) $(BINDIR)
 clean:
-	$(RM) $(OBJ) $(RMTARGETS)  fort.* *.log
+	$(RM) $(OBJ) $(RMTARGETS) *.ps *.dat *.csv fort.* *.log
 distclean: clean
 	$(RM) $(BINDIR)\* Makefile*
