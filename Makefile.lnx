@@ -11,22 +11,27 @@ SRCDIR = src/
 OBJDIR = obj/
 BINDIR = bin/
 RM = rm -f
-TARGET0 = repd
-TARGETS = repd
+TARGET0 = bookcat
+TARGET1 = repd
+TARGETS = repd bookcat
 all: $(TARGETS)
 .PHONY: clean
-obj/$(TARGET0)$(OEXE): src/repd.f
+obj/$(TARGET0)$(OEXE): src/bookcat.f
+	$(FC) -c   $< -o obj/bookcat$(OEXE) $(FFLAGS)
+$(TARGET0): obj/bookcat$(OEXE)
+	$(FC) -o bookcat $< $(LDFLAGS)
+obj/$(TARGET1)$(OEXE): src/repd.f
 	$(FC) -c   $< -o obj/repd$(OEXE) $(FFLAGS)
-$(TARGET0): obj/repd$(OEXE)
+$(TARGET1): obj/repd$(OEXE)
 	$(FC) -o repd $< $(LDFLAGS)
-TARGET1 = stdio
+TARGET2 = stdio
 $(SRCDIR)stdio.f: $(SRCDIR)stdio0.txt $(SRCDIR)stdio1.txt
 	 cat $(SRCDIR)stdio0.txt $(SRCDIR)stdio.txt >$(SRCDIR)stdio.f
-$(OBJDIR)$(TARGET1)$(OEXE): $(SRCDIR)$(TARGET1).f
-	$(FC) $(FFLAGS) $< $(FDFLAGS) $(OBJDIR)$(TARGET1)$(OEXE) 
-$(TARGET1)$(EEXE): $(OBJDIR)$(TARGET1)$(OEXE)
-	$(FL) $< $(FDFLAGS) $(TARGET1)$(EEXE) $(LDFLAGS)
-	$(RM) $(SRCDIR)$(TARGET1).f
+$(OBJDIR)$(TARGET2)$(OEXE): $(SRCDIR)$(TARGET2).f
+	$(FC) $(FFLAGS) $< $(FDFLAGS) $(OBJDIR)$(TARGET2)$(OEXE) 
+$(TARGET2)$(EEXE): $(OBJDIR)$(TARGET2)$(OEXE)
+	$(FL) $< $(FDFLAGS) $(TARGET2)$(EEXE) $(LDFLAGS)
+	$(RM) $(SRCDIR)$(TARGET2).f
 install: all
 	mv $(TARGETS) $(BINDIR)
 clean:

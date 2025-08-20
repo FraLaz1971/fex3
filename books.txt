@@ -1,0 +1,5 @@
+      #AUTHOR                           TITLE     PUBLISHER
+Carrol L.    Alice through the looking Glass Penguin       
+Knuth D.     Semi-numerical Algorithms       Addison-Wesley
+Steinbeck.J  Sweet Thursday                  Penguin       
+WiederholdG. Database Design                 McGraw-Hill   
