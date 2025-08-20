@@ -1,0 +1,6 @@
+     #Name   Physics     Maths   History Geography    French
+Fowler .L.         50        47        89        30        46
+Barron.L.W         37        67        65        68        98
+Warren.J.          25        45        48        10        36
+Mallory.D.         89        56        45        30        65
+Codd.S.            68        78        76        98        65

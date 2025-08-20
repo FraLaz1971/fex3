@@ -26,7 +26,6 @@ C     +      'NUMBER=',NUMBER(I)
 C print the telephone directory
       SUBROUTINE PRDB(NMAX,NAME,ADDRES,NUMBER)
         INTEGER NMAX,I
-        CHARACTER*25 RAW1
         CHARACTER*20 NAME(50)
         CHARACTER*40 ADDRES(50)
         INTEGER NUMBER(50)
