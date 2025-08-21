@@ -1,9 +1,16 @@
 # fex3
 ## fortran examples on general topics
+Ths source code is written in
+FORTRAN 77 standard (ANSI/ISO).
 The following instructions are to
 compile and run the program on linux terminal
 or importing the project in an IDE that
 accept Makefile based projects.
+The programs has beem compiled and tested
+both on Microsoft Windows OS (using mingw gfortran compiler and
+salford/silverfrost FTN77 compiler). To compile
+using makefiles gnu `make` (gmake) on linux or
+mingw `mingw32-make` on MS Windows.
 ###
 To create all the executables:
 `make`
@@ -48,4 +55,6 @@ To run and create a plot on screen with linux
 `make plot`
  (needs gnuplot installed)
 ![yearly rain](rainfall.png "Rainfall")
-
+###
+To remove all the generated files
+`make clean`
