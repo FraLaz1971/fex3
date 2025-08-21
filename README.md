@@ -46,5 +46,6 @@ in different months of the year. It compute the monthly rain
 average and create a histogram plot of the rainfall during the year.
 To run and create a plot on screen with linux
 `make plot`
+ (needs gnuplot installed)
 ![yearly rain](rainfall.png "Rainfall")
 
