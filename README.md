@@ -42,7 +42,7 @@ containing a list of contacts
 and the prints it out on the terminal screen.
 ### rain
 This program reads a file rainfall.txt with data on rainfall
-in different months of the year. It compute the monthly rain
+in different months of the year. It computes the monthly rain
 average and create a histogram plot of the rainfall during the year.
 To run and create a plot on screen with linux
 `make plot`
