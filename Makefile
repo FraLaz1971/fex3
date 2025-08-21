@@ -1,5 +1,5 @@
-FC=f77 -g -O2
-FL=f77
+FC=gfortran -g -O2
+FL=gfortran
 EEXE = 
 OEXE = .o
 SRC = $(wildcard src/*.f)
@@ -45,6 +45,7 @@ $(TARGET4)$(EEXE): $(OBJDIR)$(TARGET4)$(OEXE)
 install: all
 	mv $(TARGETS) $(BINDIR)
 clean:
-	$(RM) $(OBJ) $(TARGETS) stdio *.dat *.csv fort.* *.log
+	$(RM) $(OBJ) $(TARGETS) stdio fort.* *.log
+cleanall: clean
 distclean: clean
 	$(RM) $(BINDIR)* Makefile*

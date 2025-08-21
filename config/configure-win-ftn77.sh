@@ -14,7 +14,7 @@ echo 'LDFLAGS = '
 echo 'SRCDIR = src'
 echo 'OBJDIR = obj'
 echo 'BINDIR = bin'
-echo 'RM = del'
+echo 'RM = del /Q /D'
 echo 'MV = move'
 
 for t in $(ls -1 src/*.f)
@@ -55,11 +55,15 @@ echo -e "\t"'$(FL) $< $(FDFLAGS)$(TARGET'$a')$(EEXE) $(LDFLAGS)'
 echo '$(TARGET'$a'): $(TARGET'$a')$(EEXE)'
 echo 'echo created all targets' >&2
 echo 'install: all'
-echo -e '\t $(MV) $(TARGETS) $(BINDIR)'
+echo -e "\t"'$(MV) $(TARGETS) $(BINDIR)'
 echo 'clean:'
-echo -e "\t"'$(RM) $(OBJ) $(RMTARGETS) *.ps *.dat *.csv fort.* *.log'
+echo -e "\t"'$(RM) $(OBJDIR)\$(OBJ) $(RMTARGETS) *.ps fort.* *.log'
+echo 'cleanall: clean'
 echo 'distclean: clean'
 echo -e "\t"'$(RM) $(BINDIR)\* Makefile*'
+echo 'plot: gplot.sh rain.plt rain.exe'
+echo -e "\t rain"
+echo -e "\t gpw.bat"
 echo "generating dirs" >&2
 if ! test -d bin; then mkdir  bin; fi 
 if ! test -d obj; then mkdir  obj; fi 

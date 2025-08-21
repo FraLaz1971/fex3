@@ -1,17 +1,18 @@
 #/usr/bin/env bash
 echo "generating total makefile ..." >&2
 a=0;t=0;OBJDIR='src/';OEXE=.o;EEXE='';TARGETS=
-echo 'FC=f77 -g -O2'
+echo 'FC=gfortran -g -O2'
 echo 'EEXE = '
 echo 'OEXE = .o'
 echo 'SRC = $(wildcard src/*.f)'
-echo "OBJ = obj/*$(OEXE)"
+echo 'OBJ = obj/*$(OEXE)'
 echo 'FFLAGS = '
 echo 'LDFLAGS = -Llib'
 echo 'SRCDIR = src/'
 echo 'OBJDIR = obj/'
 echo 'BINDIR = bin/'
-echo 'RM = rm -f'
+echo 'RM = del /Q /D'
+echo 'MV = move'
 
 for t in $(ls -1 src/*.f)
 do
@@ -37,14 +38,17 @@ do
 	fi
 	a=$(($a+1)) 
 done
-        echo 'echo created all targets' >&2
-        echo 'install: all'
-        echo -e '\tmv $(TARGETS) $(BINDIR)'
-        echo '.PHONY: clean'
-        echo 'clean:'
-        echo -e "\t"'$(RM) $(OBJ) $(TARGETS) *.ps *.dat *.csv fort.* *.log'
-        echo 'distclean: clean'
-        echo -e "\t"'$(RM) $(BINDIR)* Makefile*'
-        echo "generating dirs" >&2
+	echo 'echo created all targets' >&2
+	echo 'install: all'
+	echo -e '\tmv $(TARGETS) $(BINDIR)'
+	echo 'clean:'
+	echo -e "\t"'$(RM) $(OBJ) *.exe *.ps *.log'
+	echo 'cleanall: clean'
+	echo 'distclean: clean'
+	echo -e "\t"'$(RM) $(BINDIR)* Makefile'
+	echo 'plot: gplot.sh rain.plt rain.exe'
+	echo -e "\t rain"
+	echo -e "\t gpw.bat"
+	echo "generating dirs" >&2
 if ! test -d bin; then mkdir  bin; fi
 if ! test -d obj; then mkdir  obj; fi

@@ -1,12 +1,13 @@
 #/usr/bin/env bash
 echo "generating total makefile ..." >/dev/stderr
 a=0;t=0;TARGETS=
-echo 'FC=f77 -g -O2'
+echo 'FC=gfortran -g -O2'
 echo 'SRC = $(wildcard src/*.f)'
 echo "OBJ = obj/*.o obj/*.obj"
 echo 'FFLAGS = -Iinclude'
 echo 'LDFLAGS = -Llib -lm'
-
+echo 'RM = del /Q /D'
+echo 'MV = move'
 for t in $(ls -1 src/*.f)
 do
 	TARGET=$(basename ${t%.*})
@@ -32,13 +33,17 @@ do
 	a=$(($a+1)) 
 done
 	echo 'echo created all targets' >/dev/stderr
+	echo '.PHONY: clean cleanall distclean plot'
 	echo 'install: all'
-        echo -e '\tmv $(TARGETS) bin'
-	echo '.PHONY: clean'
+	echo -e "\t"'$(MV) $(TARGETS) $(BINDIR)'
 	echo 'clean:'
-	echo -e "\t"'rm -f $(OBJ) $(TARGETS) *.ps *.dat *.csv'
+	echo -e "\t"'$(RM) $(OBJ) *.exe *.ps *.log'
+	echo 'cleanall: clean'
 	echo 'distclean: clean'
-        echo -e "\trm -f bin/* Makefile"
+	echo -e "\t"'$(RM) $(BINDIR)* Makefile'
+	echo 'plot: gplot.sh rain.plt rain.exe'
+	echo -e "\t rain"
+	echo -e "\t gpw.bat"
 echo "generating dirs" >/dev/stderr
 if ! test -d bin; then mkdir  bin; fi
 if ! test -d obj; then mkdir  obj; fi

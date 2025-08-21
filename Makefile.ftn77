@@ -10,7 +10,7 @@ LDFLAGS =
 SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
-RM = del
+RM = del /Q /D
 MV = move
 TARGET0 = bookcat
 TARGET1 = exams
@@ -49,8 +49,12 @@ $(TARGET4)$(EEXE): $(TARGET4)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET4)$(EEXE) $(LDFLAGS)
 $(TARGET4): $(TARGET4)$(EEXE)
 install: all
-	 $(MV) $(TARGETS) $(BINDIR)
+	$(MV) $(TARGETS) $(BINDIR)
 clean:
-	$(RM) $(OBJ) $(RMTARGETS) *.ps *.dat *.csv fort.* *.log
+	$(RM) $(OBJDIR)\$(OBJ) $(RMTARGETS) *.ps fort.* *.log
+cleanall: clean
 distclean: clean
 	$(RM) $(BINDIR)\* Makefile*
+plot: gplot.sh rain.plt rain.exe
+	 rain
+	 gpw.bat

@@ -7,13 +7,13 @@ then
         if [[ $arch == i686 ]]
         then
                 echo 'ex. config/configure-win-i686-mingw.sh > Makefile.mingw32'
-                . config/configure-win-i686-gfortran.sh > Makefile.gfortran32
-		cp Makefile.gfortran32 Makefile
+                . config/configure-win-i686-gfortran.sh > Makefile.mingw32
+		cp Makefile.mingw32 Makefile
         elif [[ $arch == x86_64 ]]
         then
-                echo 'ex. config/configure-win-mingw.sh > Makefile.gfortran64'
-                . config/configure-win-X86_64-gfortran.sh > Makefile.gfortran64
-		cp Makefile.gfortran64 Makefile
+                echo 'ex. config/configure-win-mingw.sh > Makefile.mingw64'
+                . config/configure-win-X86_64-gfortran.sh > Makefile.mingw64
+		cp Makefile.mingw64 Makefile
         else
                 echo "unhandled arch"
         fi

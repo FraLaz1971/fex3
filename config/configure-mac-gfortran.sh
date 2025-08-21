@@ -1,7 +1,7 @@
 #/usr/bin/env bash
 echo "generating total makefile ..." >/dev/stderr
 a=0;t=0;TARGETS=
-echo 'FC=f77 -g -O2'
+echo 'FC=gfortran -g -O2'
 echo 'SRC = $(wildcard src/*.f)'
 echo "OBJ = obj/*.o obj/*.obj"
 echo 'FFLAGS = -Iinclude'

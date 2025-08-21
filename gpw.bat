@@ -1,0 +1,2 @@
+gnuplot -p rain.plt
+

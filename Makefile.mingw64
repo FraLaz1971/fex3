@@ -1,8 +1,13 @@
 FC=gfortran -g -O2
+EEXE = 
+OEXE = .o
 SRC = $(wildcard src/*.f)
-OBJ = obj/*.o obj/*.obj
-FFLAGS = -Iinclude
-LDFLAGS = -Llib -lm
+OBJ = obj/*$(OEXE)
+FFLAGS = 
+LDFLAGS = -Llib
+SRCDIR = src/
+OBJDIR = obj/
+BINDIR = bin/
 RM = del /Q /D
 MV = move
 TARGET0 = bookcat
@@ -27,9 +32,8 @@ obj/$(TARGET3).o: src/repd.f
 	$(FC) -c   $< -o obj/repd.o $(FFLAGS)
 $(TARGET3): obj/repd.o
 	$(FC) -o repd $< $(LDFLAGS)
-.PHONY: clean cleanall distclean plot
 install: all
-	$(MV) $(TARGETS) $(BINDIR)
+	mv $(TARGETS) $(BINDIR)
 clean:
 	$(RM) $(OBJ) *.exe *.ps *.log
 cleanall: clean
