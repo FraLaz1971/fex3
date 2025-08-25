@@ -12,46 +12,118 @@ OBJDIR = obj
 BINDIR = bin
 RM = del /Q /D
 MV = move
-TARGET0 = bookcat
-TARGET1 = exams
-TARGET2 = rain
-TARGET3 = repd
-TARGETS = repd rain exams bookcat
-RMTARGETS = repd.exe rain.exe exams.exe bookcat.exe
+TARGET0 = bconvert
+TARGET1 = bookcat
+TARGET2 = bytes
+TARGET3 = createpoints
+TARGET4 = crtpntftn77
+TARGET5 = dimtest
+TARGET6 = directfileio
+TARGET7 = es1
+TARGET8 = exams
+TARGET9 = loadwritearray
+TARGET10 = loan
+TARGET11 = rain
+TARGET12 = reduce
+TARGET13 = repd
+TARGET14 = stats
+TARGET15 = writereadform
+TARGETS = writereadform stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
+RMTARGETS = writereadform.exe stats.exe repd.exe reduce.exe rain.exe loan.exe loadwritearray.exe exams.exe es1.exe directfileio.exe dimtest.exe crtpntftn77.exe createpoints.exe bytes.exe bookcat.exe bconvert.exe
 all: $(RMTARGETS)
 .PHONY: $(TARGETS) clean distclean install
-$(TARGET0)$(OEXE): $(SRCDIR)\bookcat.f
+$(TARGET0)$(OEXE): $(SRCDIR)\bconvert.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET0)$(EEXE): $(TARGET0)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET0)$(EEXE) $(LDFLAGS)
 $(TARGET0): $(TARGET0)$(EEXE)
-$(TARGET1)$(OEXE): $(SRCDIR)\exams.f
+$(TARGET1)$(OEXE): $(SRCDIR)\bookcat.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET1)$(EEXE): $(TARGET1)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET1)$(EEXE) $(LDFLAGS)
 $(TARGET1): $(TARGET1)$(EEXE)
-$(TARGET2)$(OEXE): $(SRCDIR)\rain.f
+$(TARGET2)$(OEXE): $(SRCDIR)\bytes.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET2)$(EEXE): $(TARGET2)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET2)$(EEXE) $(LDFLAGS)
 $(TARGET2): $(TARGET2)$(EEXE)
-$(TARGET3)$(OEXE): $(SRCDIR)\repd.f
+$(TARGET3)$(OEXE): $(SRCDIR)\createpoints.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET3)$(EEXE): $(TARGET3)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET3)$(EEXE) $(LDFLAGS)
 $(TARGET3): $(TARGET3)$(EEXE)
-TARGET4 = stdio
-$(SRCDIR)\stdio.f: $(SRCDIR)\stdio0.txt $(SRCDIR)\stdio1.txt
-	 cat $(SRCDIR)\stdio1.txt $(SRCDIR)\stdio.txt >$(SRCDIR)\stdio.f
-$(TARGET4)$(OEXE): $(SRCDIR)\$(TARGET4).f
+$(TARGET4)$(OEXE): $(SRCDIR)\crtpntftn77.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET4)$(EEXE): $(TARGET4)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET4)$(EEXE) $(LDFLAGS)
 $(TARGET4): $(TARGET4)$(EEXE)
+$(TARGET5)$(OEXE): $(SRCDIR)\dimtest.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET5)$(EEXE): $(TARGET5)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET5)$(EEXE) $(LDFLAGS)
+$(TARGET5): $(TARGET5)$(EEXE)
+$(TARGET6)$(OEXE): $(SRCDIR)\directfileio.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET6)$(EEXE): $(TARGET6)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET6)$(EEXE) $(LDFLAGS)
+$(TARGET6): $(TARGET6)$(EEXE)
+$(TARGET7)$(OEXE): $(SRCDIR)\es1.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET7)$(EEXE): $(TARGET7)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET7)$(EEXE) $(LDFLAGS)
+$(TARGET7): $(TARGET7)$(EEXE)
+$(TARGET8)$(OEXE): $(SRCDIR)\exams.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET8)$(EEXE): $(TARGET8)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET8)$(EEXE) $(LDFLAGS)
+$(TARGET8): $(TARGET8)$(EEXE)
+$(TARGET9)$(OEXE): $(SRCDIR)\loadwritearray.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET9)$(EEXE): $(TARGET9)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET9)$(EEXE) $(LDFLAGS)
+$(TARGET9): $(TARGET9)$(EEXE)
+$(TARGET10)$(OEXE): $(SRCDIR)\loan.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET10)$(EEXE): $(TARGET10)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET10)$(EEXE) $(LDFLAGS)
+$(TARGET10): $(TARGET10)$(EEXE)
+$(TARGET11)$(OEXE): $(SRCDIR)\rain.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET11)$(EEXE): $(TARGET11)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET11)$(EEXE) $(LDFLAGS)
+$(TARGET11): $(TARGET11)$(EEXE)
+$(TARGET12)$(OEXE): $(SRCDIR)\reduce.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET12)$(EEXE): $(TARGET12)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET12)$(EEXE) $(LDFLAGS)
+$(TARGET12): $(TARGET12)$(EEXE)
+$(TARGET13)$(OEXE): $(SRCDIR)\repd.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET13)$(EEXE): $(TARGET13)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET13)$(EEXE) $(LDFLAGS)
+$(TARGET13): $(TARGET13)$(EEXE)
+$(TARGET14)$(OEXE): $(SRCDIR)\stats.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET14)$(EEXE): $(TARGET14)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET14)$(EEXE) $(LDFLAGS)
+$(TARGET14): $(TARGET14)$(EEXE)
+$(TARGET15)$(OEXE): $(SRCDIR)\writereadform.f
+	$(FC) $< $(FFLAGS) 
+$(TARGET15)$(EEXE): $(TARGET15)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET15)$(EEXE) $(LDFLAGS)
+$(TARGET15): $(TARGET15)$(EEXE)
+TARGET16 = stdio
+$(SRCDIR)\stdio.f: $(SRCDIR)\stdio0.txt $(SRCDIR)\stdio1.txt
+	 cat $(SRCDIR)\stdio1.txt $(SRCDIR)\stdio.txt >$(SRCDIR)\stdio.f
+$(TARGET16)$(OEXE): $(SRCDIR)\$(TARGET16).f
+	$(FC) $< $(FFLAGS) 
+$(TARGET16)$(EEXE): $(TARGET16)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET16)$(EEXE) $(LDFLAGS)
+$(TARGET16): $(TARGET16)$(EEXE)
 install: all
 	$(MV) $(TARGETS) $(BINDIR)
 clean:
-	$(RM) $(OBJDIR)\$(OBJ) $(RMTARGETS) *.ps fort.* *.log
+	$(RM) $(OBJ) $(RMTARGETS) *.ps fort.* *.log
 cleanall: clean
 distclean: clean
 	$(RM) $(BINDIR)\* Makefile*

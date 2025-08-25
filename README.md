@@ -56,5 +56,5 @@ To run and create a plot on screen with linux
  (needs gnuplot installed)
 ![yearly rain](rainfall.png "Rainfall")
 ###
-To remove all the generated files
+To remove all the generated files:
 `make clean`

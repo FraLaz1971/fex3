@@ -57,7 +57,7 @@ echo 'echo created all targets' >&2
 echo 'install: all'
 echo -e "\t"'$(MV) $(TARGETS) $(BINDIR)'
 echo 'clean:'
-echo -e "\t"'$(RM) $(OBJDIR)\$(OBJ) $(RMTARGETS) *.ps fort.* *.log'
+echo -e "\t"'$(RM) $(OBJ) $(RMTARGETS) *.ps fort.* *.log'
 echo 'cleanall: clean'
 echo 'distclean: clean'
 echo -e "\t"'$(RM) $(BINDIR)\* Makefile*'

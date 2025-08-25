@@ -1,0 +1,36 @@
+      SUBROUTINE XREAD
+      INTEGER A
+      REAL B
+      OPEN(12, FILE='inven.db',ACCESS='DIRECT',RECL=20, 
+     & FORM='FORMATTED', ERR=90, STATUS='OLD') 
+      READ(12, FMT='(I10,F10.3)',REC=13,ERR=30) A, B
+      CLOSE(12)
+      PRINT *,A,B
+      GOTO 100
+30    PRINT *,'XREAD:I/O READ ERROR'
+      GOTO 100
+90    PRINT *,'XREAD:I/O FILE OPEN ERROR'
+100   RETURN
+      END
+
+      SUBROUTINE XWRITE
+       INTEGER I
+       REAL R
+       OPEN(11,FILE='inven.db',FORM='FORMATTED',RECL=20
+     & ,ACCESS='DIRECT',ERR=90)
+       DO 10 I=1,20
+         WRITE(11,'(I10,F10.3)',REC=I,ERR=30)I,I/3.0
+10     CONTINUE
+       CLOSE(11)
+       GOTO 100
+30     PRINT *,'XWRITE:I/O WRITE ERROR'
+       GOTO 100
+90     PRINT *,'XWRITE:I/O FILE OPEN ERROR'
+100       RETURN
+      END
+
+      PROGRAM TD
+        CALL XWRITE()
+        CALL XREAD()
+        STOP
+      END
