@@ -1,0 +1,22 @@
+C THIS PROGRAM TESTS THE USE OF A FUNCTION
+       REAL FUNCTION MYSUM1(X,NPOINTS)
+         IMPLICIT NONE
+         INTEGER I,NPOINTS
+         REAL X(10),MSUM
+         MSUM=0.0
+         DO 10,I=1,NPOINTS
+	       MSUM=X(I)+MSUM
+10       CONTINUE
+         MYSUM1=MSUM
+         RETURN
+       END
+
+       PROGRAM TEST1
+         IMPLICIT NONE
+         INTEGER NPOINTS
+         REAL X(10),MSUM,MYSUM1
+         NPOINTS=3
+	     DATA X/3.3,2.12,3.14,7*0.0/
+	     MSUM = MYSUM1(X,NPOINTS)
+	     PRINT '(A,F10.2)','MSUM =',MSUM
+       END

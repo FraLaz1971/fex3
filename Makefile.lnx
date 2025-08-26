@@ -26,8 +26,9 @@ TARGET11 = rain
 TARGET12 = reduce
 TARGET13 = repd
 TARGET14 = stats
-TARGET15 = writereadform
-TARGETS = writereadform stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
+TARGET15 = testf
+TARGET16 = writereadform
+TARGETS = writereadform testf stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
 all: $(TARGETS)
 .PHONY: clean
 obj/$(TARGET0)$(OEXE): src/bconvert.f
@@ -90,18 +91,22 @@ obj/$(TARGET14)$(OEXE): src/stats.f
 	$(FC) -c   $< -o obj/stats$(OEXE) $(FFLAGS)
 $(TARGET14): obj/stats$(OEXE)
 	$(FC) -o stats $< $(LDFLAGS)
-obj/$(TARGET15)$(OEXE): src/writereadform.f
+obj/$(TARGET15)$(OEXE): src/testf.f
+	$(FC) -c   $< -o obj/testf$(OEXE) $(FFLAGS)
+$(TARGET15): obj/testf$(OEXE)
+	$(FC) -o testf $< $(LDFLAGS)
+obj/$(TARGET16)$(OEXE): src/writereadform.f
 	$(FC) -c   $< -o obj/writereadform$(OEXE) $(FFLAGS)
-$(TARGET15): obj/writereadform$(OEXE)
+$(TARGET16): obj/writereadform$(OEXE)
 	$(FC) -o writereadform $< $(LDFLAGS)
-TARGET16 = stdio
+TARGET17 = stdio
 $(SRCDIR)stdio.f: $(SRCDIR)stdio0.txt $(SRCDIR)stdio1.txt
 	 cat $(SRCDIR)stdio0.txt $(SRCDIR)stdio.txt >$(SRCDIR)stdio.f
-$(OBJDIR)$(TARGET16)$(OEXE): $(SRCDIR)$(TARGET16).f
-	$(FC) $(FFLAGS) $< $(FDFLAGS) $(OBJDIR)$(TARGET16)$(OEXE) 
-$(TARGET16)$(EEXE): $(OBJDIR)$(TARGET16)$(OEXE)
-	$(FL) $< $(FDFLAGS) $(TARGET16)$(EEXE) $(LDFLAGS)
-	$(RM) $(SRCDIR)$(TARGET16).f
+$(OBJDIR)$(TARGET17)$(OEXE): $(SRCDIR)$(TARGET17).f
+	$(FC) $(FFLAGS) $< $(FDFLAGS) $(OBJDIR)$(TARGET17)$(OEXE) 
+$(TARGET17)$(EEXE): $(OBJDIR)$(TARGET17)$(OEXE)
+	$(FL) $< $(FDFLAGS) $(TARGET17)$(EEXE) $(LDFLAGS)
+	$(RM) $(SRCDIR)$(TARGET17).f
 install: all
 	mv $(TARGETS) $(BINDIR)
 clean:

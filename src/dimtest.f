@@ -9,7 +9,7 @@
           PRINT '(F6.4)',A(I)
 10      CONTINUE
         DO 20,I=1,4
-          PRINT *,N(I)
+          PRINT '(I2)',N(I)
 20      CONTINUE
         STOP
       END

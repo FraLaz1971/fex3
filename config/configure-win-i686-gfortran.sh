@@ -3,9 +3,9 @@ echo "generating total makefile ..." >/dev/stderr
 a=0;t=0;TARGETS=
 echo 'FC=gfortran -g -O2'
 echo 'SRC = $(wildcard src/*.f)'
-echo "OBJ = obj/*.o obj/*.obj"
-echo 'FFLAGS = -Iinclude'
-echo 'LDFLAGS = -Llib -lm'
+echo "OBJ = obj\*.o "
+echo 'FFLAGS ='
+echo 'LDFLAGS ='
 echo 'RM = del /Q /D'
 echo 'MV = move'
 for t in $(ls -1 src/*.f)

@@ -1,32 +1,97 @@
 FC=gfortran -g -O2
 SRC = $(wildcard src/*.f)
-OBJ = obj/*.o obj/*.obj
-FFLAGS = -Iinclude
-LDFLAGS = -Llib -lm
+OBJ = obj\*.o 
+FFLAGS =
+LDFLAGS =
 RM = del /Q /D
 MV = move
-TARGET0 = bookcat
-TARGET1 = exams
-TARGET2 = rain
-TARGET3 = repd
-TARGETS = repd rain exams bookcat
+TARGET0 = bconvert
+TARGET1 = bookcat
+TARGET2 = bytes
+TARGET3 = createpoints
+TARGET4 = crtpntftn77
+TARGET5 = dimtest
+TARGET6 = directfileio
+TARGET7 = es1
+TARGET8 = exams
+TARGET9 = loadwritearray
+TARGET10 = loan
+TARGET11 = rain
+TARGET12 = reduce
+TARGET13 = repd
+TARGET14 = stats
+TARGET15 = testf
+TARGET16 = writereadform
+TARGETS = writereadform testf stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
 all: $(TARGETS)
-obj/$(TARGET0).o: src/bookcat.f
+obj/$(TARGET0).o: src/bconvert.f
+	$(FC) -c   $< -o obj/bconvert.o $(FFLAGS)
+$(TARGET0): obj/bconvert.o
+	$(FC) -o bconvert $< $(LDFLAGS)
+obj/$(TARGET1).o: src/bookcat.f
 	$(FC) -c   $< -o obj/bookcat.o $(FFLAGS)
-$(TARGET0): obj/bookcat.o
+$(TARGET1): obj/bookcat.o
 	$(FC) -o bookcat $< $(LDFLAGS)
-obj/$(TARGET1).o: src/exams.f
+obj/$(TARGET2).o: src/bytes.f
+	$(FC) -c   $< -o obj/bytes.o $(FFLAGS)
+$(TARGET2): obj/bytes.o
+	$(FC) -o bytes $< $(LDFLAGS)
+obj/$(TARGET3).o: src/createpoints.f
+	$(FC) -c   $< -o obj/createpoints.o $(FFLAGS)
+$(TARGET3): obj/createpoints.o
+	$(FC) -o createpoints $< $(LDFLAGS)
+obj/$(TARGET4).o: src/crtpntftn77.f
+	$(FC) -c   $< -o obj/crtpntftn77.o $(FFLAGS)
+$(TARGET4): obj/crtpntftn77.o
+	$(FC) -o crtpntftn77 $< $(LDFLAGS)
+obj/$(TARGET5).o: src/dimtest.f
+	$(FC) -c   $< -o obj/dimtest.o $(FFLAGS)
+$(TARGET5): obj/dimtest.o
+	$(FC) -o dimtest $< $(LDFLAGS)
+obj/$(TARGET6).o: src/directfileio.f
+	$(FC) -c   $< -o obj/directfileio.o $(FFLAGS)
+$(TARGET6): obj/directfileio.o
+	$(FC) -o directfileio $< $(LDFLAGS)
+obj/$(TARGET7).o: src/es1.f
+	$(FC) -c   $< -o obj/es1.o $(FFLAGS)
+$(TARGET7): obj/es1.o
+	$(FC) -o es1 $< $(LDFLAGS)
+obj/$(TARGET8).o: src/exams.f
 	$(FC) -c   $< -o obj/exams.o $(FFLAGS)
-$(TARGET1): obj/exams.o
+$(TARGET8): obj/exams.o
 	$(FC) -o exams $< $(LDFLAGS)
-obj/$(TARGET2).o: src/rain.f
+obj/$(TARGET9).o: src/loadwritearray.f
+	$(FC) -c   $< -o obj/loadwritearray.o $(FFLAGS)
+$(TARGET9): obj/loadwritearray.o
+	$(FC) -o loadwritearray $< $(LDFLAGS)
+obj/$(TARGET10).o: src/loan.f
+	$(FC) -c   $< -o obj/loan.o $(FFLAGS)
+$(TARGET10): obj/loan.o
+	$(FC) -o loan $< $(LDFLAGS)
+obj/$(TARGET11).o: src/rain.f
 	$(FC) -c   $< -o obj/rain.o $(FFLAGS)
-$(TARGET2): obj/rain.o
+$(TARGET11): obj/rain.o
 	$(FC) -o rain $< $(LDFLAGS)
-obj/$(TARGET3).o: src/repd.f
+obj/$(TARGET12).o: src/reduce.f
+	$(FC) -c   $< -o obj/reduce.o $(FFLAGS)
+$(TARGET12): obj/reduce.o
+	$(FC) -o reduce $< $(LDFLAGS)
+obj/$(TARGET13).o: src/repd.f
 	$(FC) -c   $< -o obj/repd.o $(FFLAGS)
-$(TARGET3): obj/repd.o
+$(TARGET13): obj/repd.o
 	$(FC) -o repd $< $(LDFLAGS)
+obj/$(TARGET14).o: src/stats.f
+	$(FC) -c   $< -o obj/stats.o $(FFLAGS)
+$(TARGET14): obj/stats.o
+	$(FC) -o stats $< $(LDFLAGS)
+obj/$(TARGET15).o: src/testf.f
+	$(FC) -c   $< -o obj/testf.o $(FFLAGS)
+$(TARGET15): obj/testf.o
+	$(FC) -o testf $< $(LDFLAGS)
+obj/$(TARGET16).o: src/writereadform.f
+	$(FC) -c   $< -o obj/writereadform.o $(FFLAGS)
+$(TARGET16): obj/writereadform.o
+	$(FC) -o writereadform $< $(LDFLAGS)
 .PHONY: clean cleanall distclean plot
 install: all
 	$(MV) $(TARGETS) $(BINDIR)

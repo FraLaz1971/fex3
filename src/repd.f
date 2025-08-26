@@ -30,8 +30,8 @@ C print the telephone directory
         CHARACTER*40 ADDRES(50)
         INTEGER NUMBER(50)
         DO 10,I=1,NMAX
-            PRINT *,'I=',I,'NAME=',NAME(I),'ADDRESS=',ADDRES(I),
-     +      'NUMBER=',NUMBER(I)
+            PRINT '(A,I2,A,A15,A,A34,A,I7)','I=',I,' NAME=',NAME(I),
+     +      'ADDRESS=',ADDRES(I),'NUMBER=',NUMBER(I)
 10      CONTINUE
       END
 C read and load in memory the telephone directory

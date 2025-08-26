@@ -9,7 +9,7 @@
         READ *,FNAME
         CALL SRAND(SEED)
         OPEN(UNIT=11,FILE=FNAME,STATUS='UNKNOWN')
-        WRITE(11,'(I4)')NPOINTS
+        WRITE(11,'(I8)')NPOINTS
         DO 10,I=1,NPOINTS
             WRITE(11,'(F10.4)')RAND()*1000
 10      CONTINUE

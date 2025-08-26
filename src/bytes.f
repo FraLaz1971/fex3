@@ -5,17 +5,22 @@ C Read bytes binary data from a string
       SUBROUTINE RDBYT(CBYTES)
         INTEGER I,NIBBLE(8),MHEX
         CHARACTER*8 CBYTES
+C prints CBYTES 8 characters one-by-one
         DO 10,I=1,8
             PRINT *,CBYTES(I:I)
 10      CONTINUE
+c read hex characters as numbers
         DO 20,I=1,8
             READ(CBYTES(I:I),100) NIBBLE(I)
 20      CONTINUE
+C prints out 8 values in decimal
         DO 30,I=1,8
             PRINT *,NIBBLE(I)
 30      CONTINUE
         READ(CBYTES,200)MHEX
+C print the 4 BYTES as a decimal number
         PRINT *,'MHEXd = ',MHEX
+C print the 4 BYTES as a hexadecimal number
         WRITE(*, 300)'MHEX = ',MHEX
 100     FORMAT(Z1)
 200     FORMAT(Z8)
@@ -26,7 +31,9 @@ C handle bytes, bits and hexadecimal data
         INTEGER NBYTES
         CHARACTER*8 CBYTES
         PARAMETER(NBYTES=8)
-        CBYTES='0E77C000'
+        PRINT *,'PLEASE ENTER AN 8 DIGITS HEXADECIMAL NUMBER'
+        PRINT *,'ZER0 FILLED'
+        READ(*,'(A8)') CBYTES
         CALL RDBYT(CBYTES)
         STOP
       END

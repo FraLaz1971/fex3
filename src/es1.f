@@ -8,10 +8,14 @@
       SAMPLE(9999)=0.34E+12
       MATRIX(2,3)=-127.33
       PHASE(1,2,1,2)=0.112E-2
+      PRINT '(F6.2)', WAGES(99)
+      PRINT '(E8.2)', SAMPLE(9999)
+      PRINT '(F7.2)', MATRIX(2,3)
+      PRINT '(E9.3)', PHASE(1,2,1,2)
       I=10
-      PRINT *, I
+      PRINT '(I2)', I
       DO 10 I=1,10
-        IF (I.GT.0) PRINT *,10-I
+        PRINT '(I2)',10-I
 10    CONTINUE
       STOP
       END

@@ -27,9 +27,10 @@ TARGET11 = rain
 TARGET12 = reduce
 TARGET13 = repd
 TARGET14 = stats
-TARGET15 = writereadform
-TARGETS = writereadform stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
-RMTARGETS = writereadform.exe stats.exe repd.exe reduce.exe rain.exe loan.exe loadwritearray.exe exams.exe es1.exe directfileio.exe dimtest.exe crtpntftn77.exe createpoints.exe bytes.exe bookcat.exe bconvert.exe
+TARGET15 = testf
+TARGET16 = writereadform
+TARGETS = writereadform testf stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
+RMTARGETS = writereadform.exe testf.exe stats.exe repd.exe reduce.exe rain.exe loan.exe loadwritearray.exe exams.exe es1.exe directfileio.exe dimtest.exe crtpntftn77.exe createpoints.exe bytes.exe bookcat.exe bconvert.exe
 all: $(RMTARGETS)
 .PHONY: $(TARGETS) clean distclean install
 $(TARGET0)$(OEXE): $(SRCDIR)\bconvert.f
@@ -107,19 +108,24 @@ $(TARGET14)$(OEXE): $(SRCDIR)\stats.f
 $(TARGET14)$(EEXE): $(TARGET14)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET14)$(EEXE) $(LDFLAGS)
 $(TARGET14): $(TARGET14)$(EEXE)
-$(TARGET15)$(OEXE): $(SRCDIR)\writereadform.f
+$(TARGET15)$(OEXE): $(SRCDIR)\testf.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET15)$(EEXE): $(TARGET15)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET15)$(EEXE) $(LDFLAGS)
 $(TARGET15): $(TARGET15)$(EEXE)
-TARGET16 = stdio
-$(SRCDIR)\stdio.f: $(SRCDIR)\stdio0.txt $(SRCDIR)\stdio1.txt
-	 cat $(SRCDIR)\stdio1.txt $(SRCDIR)\stdio.txt >$(SRCDIR)\stdio.f
-$(TARGET16)$(OEXE): $(SRCDIR)\$(TARGET16).f
+$(TARGET16)$(OEXE): $(SRCDIR)\writereadform.f
 	$(FC) $< $(FFLAGS) 
 $(TARGET16)$(EEXE): $(TARGET16)$(OEXE)
 	$(FL) $< $(FDFLAGS)$(TARGET16)$(EEXE) $(LDFLAGS)
 $(TARGET16): $(TARGET16)$(EEXE)
+TARGET17 = stdio
+$(SRCDIR)\stdio.f: $(SRCDIR)\stdio0.txt $(SRCDIR)\stdio1.txt
+	 cat $(SRCDIR)\stdio1.txt $(SRCDIR)\stdio.txt >$(SRCDIR)\stdio.f
+$(TARGET17)$(OEXE): $(SRCDIR)\$(TARGET17).f
+	$(FC) $< $(FFLAGS) 
+$(TARGET17)$(EEXE): $(TARGET17)$(OEXE)
+	$(FL) $< $(FDFLAGS)$(TARGET17)$(EEXE) $(LDFLAGS)
+$(TARGET17): $(TARGET17)$(EEXE)
 install: all
 	$(MV) $(TARGETS) $(BINDIR)
 clean:
