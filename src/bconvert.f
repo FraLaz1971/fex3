@@ -20,13 +20,13 @@ C convert a nibble (4bit) numbr in binary string
       SUBROUTINE READEC(J)
       IMPLICIT NONE
         INTEGER J
-        PRINT *,'INSERT A NUMBER IN (1,15)'
+        PRINT *,'INSERT A NUMBER IN (0,15)'
         READ *,J
       END
       SUBROUTINE REAHEX(J)
         IMPLICIT NONE
         INTEGER J
-        PRINT *,'INSERT A HEX NUMBER IN (1,F)'
+        PRINT *,'INSERT A HEX NUMBER IN (0,F)'
         READ '(Z1)',J
       END
       PROGRAM CONVER
