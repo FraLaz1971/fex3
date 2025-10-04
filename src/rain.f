@@ -65,7 +65,8 @@ C create gnuplot plot file (.plt) including data
          CHARACTER*10 MONNAM(12)
          OPEN(UNIT=3, FILE='rain.plt', STATUS='UNKNOWN')
            WRITE (3,100)'reset'
-           WRITE (3,100)'set term wxt'
+           WRITE (3,100)'set terminal png'
+           WRITE (3,100)'set output ''out.png'' '
            WRITE (3,100)'set style data histogram'
            WRITE (3,100)'set style histogram clustered'
            WRITE (3,100)'set style fill solid 1.0 border lt -1'
@@ -111,6 +112,6 @@ C       CALL PRAIN(MONNAM,RAINFL)
        CALL RRAIN(MONNAM,RAINFL)
        CALL AVG(RAINFL)
        CALL CRGPLT(MONNAM,RAINFL)
-C       CALL RPLOT
+       CALL RPLOT
        STOP
       END
