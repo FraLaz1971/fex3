@@ -21,14 +21,21 @@ It is possible to search entries of a given author
 typing the author name and pushing enter.
 Follow the instructions on the console.
 To create only this program
+###
 `make bookcat`
+###
 To execute it
+###
 `./bookcat`
 ### exams
 To create only this program
+###
 `make exams`
+###
 To execute it
+###
 `./exams`
+###
 This program reads a table of the marks of students
 at exams on different subjects. The table is contained
 in the file exams.txt that can be also created by the program.
@@ -40,9 +47,13 @@ given subject exam.
 Follow the instructions on the console.
 ### repd
 To create only this program
+###
 `make repd`
+###
 To execute it
+###
 `./repd`
+###
 This program reads a phone directory from a file
 called phonedir.csv
 containing a list of contacts
@@ -52,11 +63,14 @@ This program reads a file rainfall.txt with data on rainfall
 in different months of the year. It computes the monthly rain
 average and create a histogram plot of the rainfall during the year.
 To run and create a plot on screen with linux
+###
 `make plot`
+###
  (needs gnuplot installed)
 ![yearly rain](rainfall.png "Rainfall")
 ###
 To remove all the generated files:
+###
 `make clean`
 ###
 ### bconvert
