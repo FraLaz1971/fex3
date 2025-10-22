@@ -1,0 +1,9 @@
+C TABLE OF SQUARES, CUBES, SQUARE ROOTS, CUBIC ROOTS
+      PROGRAM MTABS
+        IMPLICIT NONE
+        INTEGER I
+        REAL SQ,CUB,SQR,CUR
+        DO 10 I=1,100
+          PRINT *, I,I*I,I**3,I**0.5,I**(1.0/3.0)
+10      CONTINUE
+      END

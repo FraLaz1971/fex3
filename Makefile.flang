@@ -28,7 +28,10 @@ TARGET13 = repd
 TARGET14 = stats
 TARGET15 = testf
 TARGET16 = writereadform
-TARGETS = writereadform testf stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
+TARGET18 = temps
+TARGET19 = mtables
+TARGET20 = marks
+TARGETS = writereadform testf stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert temps mtables
 all: $(TARGETS)
 .PHONY: obj clean all
 all: $(TARGET0) $(TARGET1) $(TARGET2) $(TARGET3)
@@ -103,6 +106,18 @@ obj/$(TARGET16)$(OEXE): src/writereadform.f
 	$(FC) -c   $< -o obj/writereadform$(OEXE) $(FFLAGS)
 $(TARGET16): obj/writereadform$(OEXE)
 	$(FC) -o writereadform $< $(LDFLAGS)
+obj/$(TARGET18)$(OEXE): src/temps.f
+	$(FC) -c   $< -o obj/temps$(OEXE) $(FFLAGS)
+$(TARGET18): obj/temps$(OEXE)
+	$(FC) -o temps $< $(LDFLAGS)
+obj/$(TARGET19)$(OEXE): src/mtables.f
+	$(FC) -c   $< -o obj/mtables$(OEXE) $(FFLAGS)
+$(TARGET19): obj/mtables$(OEXE)
+	$(FC) -o mtables $< $(LDFLAGS)
+obj/$(TARGET20)$(OEXE): src/marks.f
+	$(FC) -c   $< -o obj/marks$(OEXE) $(FFLAGS)
+$(TARGET20): obj/marks$(OEXE)
+	$(FC) -o marks $< $(LDFLAGS)
 TARGET17 = stdio
 $(SRCDIR)stdio.f: $(SRCDIR)stdio0.txt $(SRCDIR)stdio1.txt
 	 cat $(SRCDIR)stdio0.txt $(SRCDIR)stdio.txt >$(SRCDIR)stdio.f
@@ -118,4 +133,3 @@ clean:
 cleanall: clean
 distclean: clean
 	$(RM) $(BINDIR)* Makefile*
-

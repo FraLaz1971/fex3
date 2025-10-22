@@ -1,0 +1,33 @@
+C compute averages particle decay
+      PROGRAM DECAY
+        IMPLICIT NONE
+        REAL GMAX,TLAST,T,DT,AVA,AVB,AVG
+        INTEGER MAXINT
+        INTEGER IMAX,I,NALPHA,NBETA,NGAMMA
+        GMAX=0.0
+        TLAST=0.0
+        MAXINT=0
+        IMAX=5
+        WRITE(*,201)
+        DO 10,I=1,IMAX
+          READ(*,101) T,NALPHA,NBETA,NGAMMA
+          DT=T-TLAST
+          AVA=NALPHA/DT
+          AVB=NBETA/DT
+          AVG=NGAMMA/DT
+          WRITE(*,202) I,DT,NALPHA,NBETA,NGAMMA,AVA,AVB,AVG
+          IF (AVG.GT.GMAX) THEN
+            GMAX=AVG
+            MAXINT=I
+          END IF
+        TLAST=T
+10      CONTINUE
+        WRITE(*,203) GMAX, MAXINT
+	STOP
+101     FORMAT(F8.2,3(5X,I6))
+201     FORMAT(T2,'N. ',T7,'TIME',T14,'ALPHA',T23,'BETA'
+     &  ,T30,'GAMMA',T38,'AV. A',T46,'AV. B',T54,'AV. G')
+202     FORMAT(I8,F6.2,3I8,3F8.2)
+203     FORMAT('MAXIMUM AVERAGE EMISSION OF GAMMA RADIATION '
+     &  ,F7.2,' WAS IN INTERVAL N. ',I8)
+      END
