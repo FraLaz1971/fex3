@@ -16,19 +16,23 @@ TARGET1 = bookcat
 TARGET2 = bytes
 TARGET3 = createpoints
 TARGET4 = crtpntftn77
-TARGET5 = dimtest
-TARGET6 = directfileio
-TARGET7 = es1
-TARGET8 = exams
-TARGET9 = loadwritearray
-TARGET10 = loan
-TARGET11 = rain
-TARGET12 = reduce
-TARGET13 = repd
-TARGET14 = stats
-TARGET15 = testf
-TARGET16 = writereadform
-TARGETS = writereadform testf stats repd reduce rain loan loadwritearray exams es1 directfileio dimtest crtpntftn77 createpoints bytes bookcat bconvert
+TARGET5 = decay
+TARGET6 = dimtest
+TARGET7 = directfileio
+TARGET8 = es1
+TARGET9 = exams
+TARGET10 = loadwritearray
+TARGET11 = loan
+TARGET12 = marks
+TARGET13 = mtables
+TARGET14 = rain
+TARGET15 = reduce
+TARGET16 = repd
+TARGET17 = stats
+TARGET18 = temps
+TARGET19 = testf
+TARGET20 = writereadform
+TARGETS = writereadform testf temps stats repd reduce rain mtables marks loan loadwritearray exams es1 directfileio dimtest decay crtpntftn77 createpoints bytes bookcat bconvert
 all: $(TARGETS)
 .PHONY: clean
 obj/$(TARGET0)$(OEXE): src/bconvert.f
@@ -51,62 +55,78 @@ obj/$(TARGET4)$(OEXE): src/crtpntftn77.f
 	$(FC) -c   $< -o obj/crtpntftn77$(OEXE) $(FFLAGS)
 $(TARGET4): obj/crtpntftn77$(OEXE)
 	$(FC) -o crtpntftn77 $< $(LDFLAGS)
-obj/$(TARGET5)$(OEXE): src/dimtest.f
+obj/$(TARGET5)$(OEXE): src/decay.f
+	$(FC) -c   $< -o obj/decay$(OEXE) $(FFLAGS)
+$(TARGET5): obj/decay$(OEXE)
+	$(FC) -o decay $< $(LDFLAGS)
+obj/$(TARGET6)$(OEXE): src/dimtest.f
 	$(FC) -c   $< -o obj/dimtest$(OEXE) $(FFLAGS)
-$(TARGET5): obj/dimtest$(OEXE)
+$(TARGET6): obj/dimtest$(OEXE)
 	$(FC) -o dimtest $< $(LDFLAGS)
-obj/$(TARGET6)$(OEXE): src/directfileio.f
+obj/$(TARGET7)$(OEXE): src/directfileio.f
 	$(FC) -c   $< -o obj/directfileio$(OEXE) $(FFLAGS)
-$(TARGET6): obj/directfileio$(OEXE)
+$(TARGET7): obj/directfileio$(OEXE)
 	$(FC) -o directfileio $< $(LDFLAGS)
-obj/$(TARGET7)$(OEXE): src/es1.f
+obj/$(TARGET8)$(OEXE): src/es1.f
 	$(FC) -c   $< -o obj/es1$(OEXE) $(FFLAGS)
-$(TARGET7): obj/es1$(OEXE)
+$(TARGET8): obj/es1$(OEXE)
 	$(FC) -o es1 $< $(LDFLAGS)
-obj/$(TARGET8)$(OEXE): src/exams.f
+obj/$(TARGET9)$(OEXE): src/exams.f
 	$(FC) -c   $< -o obj/exams$(OEXE) $(FFLAGS)
-$(TARGET8): obj/exams$(OEXE)
+$(TARGET9): obj/exams$(OEXE)
 	$(FC) -o exams $< $(LDFLAGS)
-obj/$(TARGET9)$(OEXE): src/loadwritearray.f
+obj/$(TARGET10)$(OEXE): src/loadwritearray.f
 	$(FC) -c   $< -o obj/loadwritearray$(OEXE) $(FFLAGS)
-$(TARGET9): obj/loadwritearray$(OEXE)
+$(TARGET10): obj/loadwritearray$(OEXE)
 	$(FC) -o loadwritearray $< $(LDFLAGS)
-obj/$(TARGET10)$(OEXE): src/loan.f
+obj/$(TARGET11)$(OEXE): src/loan.f
 	$(FC) -c   $< -o obj/loan$(OEXE) $(FFLAGS)
-$(TARGET10): obj/loan$(OEXE)
+$(TARGET11): obj/loan$(OEXE)
 	$(FC) -o loan $< $(LDFLAGS)
-obj/$(TARGET11)$(OEXE): src/rain.f
+obj/$(TARGET12)$(OEXE): src/marks.f
+	$(FC) -c   $< -o obj/marks$(OEXE) $(FFLAGS)
+$(TARGET12): obj/marks$(OEXE)
+	$(FC) -o marks $< $(LDFLAGS)
+obj/$(TARGET13)$(OEXE): src/mtables.f
+	$(FC) -c   $< -o obj/mtables$(OEXE) $(FFLAGS)
+$(TARGET13): obj/mtables$(OEXE)
+	$(FC) -o mtables $< $(LDFLAGS)
+obj/$(TARGET14)$(OEXE): src/rain.f
 	$(FC) -c   $< -o obj/rain$(OEXE) $(FFLAGS)
-$(TARGET11): obj/rain$(OEXE)
+$(TARGET14): obj/rain$(OEXE)
 	$(FC) -o rain $< $(LDFLAGS)
-obj/$(TARGET12)$(OEXE): src/reduce.f
+obj/$(TARGET15)$(OEXE): src/reduce.f
 	$(FC) -c   $< -o obj/reduce$(OEXE) $(FFLAGS)
-$(TARGET12): obj/reduce$(OEXE)
+$(TARGET15): obj/reduce$(OEXE)
 	$(FC) -o reduce $< $(LDFLAGS)
-obj/$(TARGET13)$(OEXE): src/repd.f
+obj/$(TARGET16)$(OEXE): src/repd.f
 	$(FC) -c   $< -o obj/repd$(OEXE) $(FFLAGS)
-$(TARGET13): obj/repd$(OEXE)
+$(TARGET16): obj/repd$(OEXE)
 	$(FC) -o repd $< $(LDFLAGS)
-obj/$(TARGET14)$(OEXE): src/stats.f
+obj/$(TARGET17)$(OEXE): src/stats.f
 	$(FC) -c   $< -o obj/stats$(OEXE) $(FFLAGS)
-$(TARGET14): obj/stats$(OEXE)
+$(TARGET17): obj/stats$(OEXE)
 	$(FC) -o stats $< $(LDFLAGS)
-obj/$(TARGET15)$(OEXE): src/testf.f
+obj/$(TARGET18)$(OEXE): src/temps.f
+	$(FC) -c   $< -o obj/temps$(OEXE) $(FFLAGS)
+$(TARGET18): obj/temps$(OEXE)
+	$(FC) -o temps $< $(LDFLAGS)
+obj/$(TARGET19)$(OEXE): src/testf.f
 	$(FC) -c   $< -o obj/testf$(OEXE) $(FFLAGS)
-$(TARGET15): obj/testf$(OEXE)
+$(TARGET19): obj/testf$(OEXE)
 	$(FC) -o testf $< $(LDFLAGS)
-obj/$(TARGET16)$(OEXE): src/writereadform.f
+obj/$(TARGET20)$(OEXE): src/writereadform.f
 	$(FC) -c   $< -o obj/writereadform$(OEXE) $(FFLAGS)
-$(TARGET16): obj/writereadform$(OEXE)
+$(TARGET20): obj/writereadform$(OEXE)
 	$(FC) -o writereadform $< $(LDFLAGS)
-TARGET17 = stdio
+TARGET21 = stdio
 $(SRCDIR)stdio.f: $(SRCDIR)stdio0.txt $(SRCDIR)stdio1.txt
 	 cat $(SRCDIR)stdio0.txt $(SRCDIR)stdio.txt >$(SRCDIR)stdio.f
-$(OBJDIR)$(TARGET17)$(OEXE): $(SRCDIR)$(TARGET17).f
-	$(FC) $(FFLAGS) $< $(FDFLAGS) $(OBJDIR)$(TARGET17)$(OEXE) 
-$(TARGET17)$(EEXE): $(OBJDIR)$(TARGET17)$(OEXE)
-	$(FL) $< $(FDFLAGS) $(TARGET17)$(EEXE) $(LDFLAGS)
-	$(RM) $(SRCDIR)$(TARGET17).f
+$(OBJDIR)$(TARGET21)$(OEXE): $(SRCDIR)$(TARGET21).f
+	$(FC) $(FFLAGS) $< $(FDFLAGS) $(OBJDIR)$(TARGET21)$(OEXE) 
+$(TARGET21)$(EEXE): $(OBJDIR)$(TARGET21)$(OEXE)
+	$(FL) $< $(FDFLAGS) $(TARGET21)$(EEXE) $(LDFLAGS)
+	$(RM) $(SRCDIR)$(TARGET21).f
 install: all
 	mv $(TARGETS) $(BINDIR)
 clean:

@@ -8,8 +8,20 @@ or importing the project in an IDE that
 accept Makefile based projects.
 The programs has beem compiled and tested
 both on Microsoft Windows OS (using mingw gfortran compiler and
-salford/silverfrost FTN77 compiler). To compile
-using makefiles gnu `make` (gmake) on linux or
+salford/silverfrost FTN77 compiler).
+Execute
+###
+`./configure`
+### 
+on a bash(like) shell. To create the ftn77 makefile enter
+###
+`. config/configure-win-ftn77.sh > Makefile.ftn77`
+###
+To compile on MS Windows using the ftn77 compiler digit
+###
+`mingw32-make -f Makefile.ftn77`
+###
+To compile using makefiles gnu `make` (gmake) on linux or
 mingw `mingw32-make` on MS Windows.
 ###
 To create all the executables:
@@ -130,3 +142,5 @@ the function. The main calls the function and the prints the result.
 ###
 To execute it on linux: `./writereadform` . This program define a REAL array of 1000 elements A, then fills the array with squares of the index,
 then asks in input a number N in (1,1000) .At the end shows the content of the array between A(1) and A(N).
+### temps 
+###
